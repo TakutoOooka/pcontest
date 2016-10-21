@@ -1,0 +1,41 @@
+<% if @show_user.id == current_user.id %>
+<div>
+	<div>
+		<div><h1>My Page</h1></div>
+		<div><p>NickName: <%= @show_user.nickname %></p></div>
+		<div><p>Email: <%= @show_user.email %></p></div>
+		<%= link_to 'プロフィールの編集', edit_user_registration_path %>
+	</div>
+
+	<div>
+		<h2>My Products</h2>
+		<ul>
+			<% @user_products.each do |product| %>
+				<li><%= product.source_code %></li>
+			<% end %>
+		</ul>
+		<%= paginate(@user_products) %>
+	</div>
+
+</div>
+<% else %>
+
+<div>
+	<div>
+		<div><h1><%= @show_user.nickname %>'s Page</h1></div>
+		<div><p>NickName: <%= @show_user.nickname %></p></div>
+	</div>
+
+	<div>
+		<h2><%= @show_user.nickname %>'s Products</h2>
+		<ul>
+			<% @user_products.each do |product| %>
+				<li><%= product.source_code %></li>
+			<% end %>
+		</ul>
+		<%= paginate(@user_products) %>
+	</div>
+
+</div>
+
+<% end %>

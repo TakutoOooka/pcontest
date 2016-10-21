@@ -1,0 +1,27 @@
+<div><h1>Processing Contest!!</h1></div>
+
+<div>
+	<div><h3>新規作品</h3></div>
+	<ul>
+	<% @fresh_products.each do |product| %>
+		<a href="/products/<%=product.id%>">
+			<li><%= product.source_code %></li>
+		</a>
+	<% end %>
+	</ul>
+	<div><%= link_to 'もっと見る', '/products/fresh_products',
+		method: :get %></div>
+</div>
+
+<div>
+	<div><h3>人気作品</h3></div>
+	<ul>
+	<% @popular_products.each do |product| %>
+		<a href="/products/<%=product.id%>">
+			<li><%= product.source_code %></li>
+		</a>
+	<% end %>
+	</ul>
+	<div><%= link_to 'もっと見る', '/products/popular_products',
+		method: :get %></div>
+</div>

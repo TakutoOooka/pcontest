@@ -1,0 +1,9 @@
+<% @products.each do |product| %>
+	<div>
+		<a href="/products/<%=product.id%>">
+		<p><%= product.source_code %></p>
+		</a>
+		<span><%= product.user.created_at %></span>
+	</div>
+	<%= paginate(@products) %>
+<% end %>
