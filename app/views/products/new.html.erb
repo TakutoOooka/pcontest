@@ -1,10 +1,6 @@
 <div class="contents row">
   <%= form_tag('/products', method: :post) do %>
-    <h3>
-      作品を投稿する
-    </h3>
-    <input placeholder="ProductName" type="text" name="product_name">
-    <textarea cols="30" name="source_code" placeholder="text" rows="10"></textarea>
-    <input type="submit" value="SENT">
+    <h3>作品を投稿する</h3>
+    <%= render partial: 'development' %>
   <% end %>
 </div>

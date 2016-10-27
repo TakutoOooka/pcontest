@@ -1,0 +1,6 @@
+<div>
+	<%= form_tag('/products/'+@product.id.to_s(10)+'/update', method: :patch) do %>
+		<h3>編集する</h>
+	    <%= render partial: 'development' %>
+	<% end %>
+</div>

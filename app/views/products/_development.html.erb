@@ -1,0 +1,26 @@
+<%
+	if controller.action_name == "edit"
+		product_name = @product.product_name
+	    source_code = @product.source_code
+	elsif controller.action_name == "new"
+		product_name = "ProductName"
+		source_code = ""
+	end
+ %>
+
+<input placeholder=<%=product_name%> type="text" name="product_name">
+<table width=960px heiht=320px bgcolor=#eeeeee><tr> 
+<td width=320px height=320px bgcolor=white> 
+	<canvas id="canvas0" width="320px" height="320px"></canvas> 
+</td>
+<td>
+  <div align=right>
+  <textarea id="editor" rows=25 cols=80 name="source_code">
+  	<%= source_code %>
+  </textarea><br>
+  <input type=button onclick="run()" value="実行"> 
+  <input type=button onclick="stop()" value="停止">
+  <input type="submit" value="投稿する">
+</div> 
+</td></tr>
+</table>

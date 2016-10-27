@@ -5,6 +5,13 @@ class ProductsController < ApplicationController
 	end
 
 	def edit
+		@product = Product.find(params[:id])
+	end
+
+	def update
+		product = Product.find(params[:id])
+		product.source_code = params[:source_code]
+		product.save
 	end
 
 	def create

@@ -2,10 +2,34 @@
 <html>
 <head>
   <title>Pcontest</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'processing.min', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <script type="text/javascript"> 
+    var Pjs;
+    function stop(){ // not work
+      if (Pjs)
+        Pjs.exit();
+    }
+    function run(){
+      //console.log("Run");
+      stop();
+      var canvas = document.getElementById('canvas0');
+      var code = document.getElementsByName('source_code')[0].value
+      //console.log(code);
+      try{
+        Pjs = new Processing(canvas, code);
+        //console.log(Pjs);
+      }catch(e){
+        alert(e);
+      }
+    }
+  </script> 
 </head>
+
 <body>
   <%= render partial: 'common/header' %>
   <p class="notice"><%= notice %></p>

@@ -21,13 +21,13 @@
 
 		<% if current_user.id == @product.user.id %>
 			<div>
-				<% link_to '/products/edit'+@product.id.to_s(10), method: :get do %>
-					<h4>編集する</h4>
+				<%= link_to '/products/'+@product.id.to_s(10)+'/destroy', method: :delete do %>
+					<h4>この作品を削除する</h4>
 				<% end %>
 			</div>
 			<div>
-				<%= link_to '/products/'+@product.id.to_s(10)+'/destroy', method: :delete do %>
-					<h4>この作品を削除する</h4>
+				<%= link_to '/products/'+@product.id.to_s(10)+'/edit', method: :get do %>
+					<h4>編集する</h4>
 				<% end %>
 			</div>
 		<% end %>
