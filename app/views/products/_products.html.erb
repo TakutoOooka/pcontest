@@ -1,9 +1,18 @@
+<% i = 0 %>
 <% @products.each do |product| %>
-	<div>
-		<a href="/products/<%=product.id%>">
-		<p><%= product.source_code %></p>
-		</a>
-		<span><%= product.user.created_at %></span>
-	</div>
-	<%= paginate(@products) %>
+	<table><tr>
+		<td>
+			<a href="/products/<%=product.id%>">
+				<canvas id="canvas<%=i%>" width="320px" height="320px"">
+				<%=product.source_code%>
+				</canvas>
+			</a>
+		</td>
+		<td><div align=right>
+			<%= button_tag type: 'button', onclick: "runByCanvasText(#{i})" do %>実行<% end %>
+			<%= button_tag type: 'button', onclick: "stop(#{i})" do %>停止<% end %>
+		</div></td>
+	</tr></table>
+	<% i += 1 %>
 <% end %>
+<%= paginate(@products) %>

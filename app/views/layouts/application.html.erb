@@ -66,36 +66,33 @@
 
   <script type="text/javascript">
     var Pjs = new Array(8);
-    function stop(int num){ // not work
-      if (Pjs[num])
-        Pjs[num].exit();
+
+    function stop(num){ // not work
+      if (Pjs[num]) Pjs[num].exit();
     }
-    function run(int num){
-      //console.log("Run");
+
+    function run(num){
       stop(num);
       var canvas = document.getElementById('canvas'+String(num));
-      var code = document.getElementsByName('source_code')[num].value
-      //console.log(code);
+      var code = document.getElementsByName('source_code')[num].value;
       try{
         Pjs[num] = new Processing(canvas, code);
-        //console.log(Pjs);
       }catch(e){
         alert(e);
       }
     }
 
-		function run(int num, String code) {
-			stop(num);
+    function runByCanvasText(num){
+      stop(num);
       var canvas = document.getElementById('canvas'+String(num));
-      //console.log(code);
+      var code = canvas.textContent;
       try{
         Pjs[num] = new Processing(canvas, code);
-        //console.log(Pjs);
       }catch(e){
         alert(e);
-			}
-		}
-  </script> 
+      }
+    }
+  </script>
 </head>
 
 <body>

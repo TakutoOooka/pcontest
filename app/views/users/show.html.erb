@@ -9,11 +9,7 @@
 
 	<div>
 		<h2>My Products</h2>
-		<ul>
-			<% @user_products.each do |product| %>
-				<li><%= product.source_code %></li>
-			<% end %>
-		</ul>
+		<%= render partial: 'showproducts' %>
 		<%= paginate(@user_products) %>
 	</div>
 
@@ -28,11 +24,7 @@
 
 	<div>
 		<h2><%= @show_user.nickname %>'s Products</h2>
-		<ul>
-			<% @user_products.each do |product| %>
-				<li><%= product.source_code %></li>
-			<% end %>
-		</ul>
+		<%= render partial: 'showproducts' %>
 		<%= paginate(@user_products) %>
 	</div>
 

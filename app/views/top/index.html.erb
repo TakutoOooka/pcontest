@@ -1,14 +1,26 @@
 <div><h1>Processing Contest!!</h1></div>
+<% i = 0 %>
 
 <div>
 	<div><h3>新規作品</h3></div>
-	<ul>
-	<% @fresh_products.each do |product| %>
-		<a href="/products/<%=product.id%>">
-			<li><%= product.source_code %></li>
-		</a>
-	<% end %>
-	</ul>
+	<div>
+		<% @popular_products.each do |product| %>
+			<table><tr>
+				<td>
+					<a href="/products/<%=product.id%>">
+						<canvas id="canvas<%=i%>" width="320px" height="320px"">
+						<%=product.source_code%>
+						</canvas>
+					</a>
+				</td>
+				<td><div align=right>
+					<%= button_tag type: 'button', onclick: "runByCanvasText(#{i})" do %>実行<% end %>
+					<%= button_tag type: 'button', onclick: "stop(#{i})" do %>停止<% end %>
+				</div></td>
+			</tr></table>
+			<% i += 1 %>
+		<% end %>
+	</div>
 	<div><%= link_to 'もっと見る', '/products/fresh_products',
 		method: :get %></div>
 </div>
@@ -16,21 +28,22 @@
 <div>
 	<div><h3>人気作品</h3></div>
 	<div>
-<% i = 0 %>
-	<% @popular_products.each do |product| %>
-		<table><tr>
-			<td>
-				<a href="/products/<%=product.id%>">
-					<canvas id="canvas<%=i%>" width="320px" height="320px"></canvas>
-				</a>
-			</td>
-			<td><div align=right>
-				<%= button_tag type: 'button', onclick: "run(i, product.source_code)" do %>実行<% end %>
-				<%= button_tag type: 'button', onclick: "stop(i)" do %>停止<% end %>
-			</div></td>
-		</tr></table>
-		<% i += 1 %>
-	<% end %>
+		<% @popular_products.each do |product| %>
+			<table><tr>
+				<td>
+					<a href="/products/<%=product.id%>">
+						<canvas id="canvas<%=i%>" width="320px" height="320px"">
+						<%=product.source_code%>
+						</canvas>
+					</a>
+				</td>
+				<td><div align=right>
+					<%= button_tag type: 'button', onclick: "runByCanvasText(#{i})" do %>実行<% end %>
+					<%= button_tag type: 'button', onclick: "stop(#{i})" do %>停止<% end %>
+				</div></td>
+			</tr></table>
+			<% i += 1 %>
+		<% end %>
 	</div>
 	<div><%= link_to 'もっと見る', '/products/popular_products',
 		method: :get %></div>

@@ -1,7 +1,17 @@
 <div>
 	<div>
 		<h1><%= @product.product_name %></h1>
-		<div><p><%= @product.source_code %></p></div>
+		<table><tr>
+			<td>
+				<canvas id="canvas0" width="320px" height="320px"">
+				<%=@product.source_code%>
+				</canvas>
+			</td>
+			<td><div align=right>
+				<%= button_tag type: 'button', onclick: "runByCanvasText(0)" do %>実行<% end %>
+				<%= button_tag type: 'button', onclick: "stop(0)" do %>停止<% end %>
+			</div></td>
+		</tr></table>
 		<div><p>作成者: <%= @product.user.nickname %></p></div>
 
 		<div>
