@@ -15,9 +15,9 @@
       <div class='navbar-collapse collapse navbar-responsive-collapse navbar-right'>
         <ul class='nav navbar-nav'>
           <li><%= link_to 'HOME', root_path %></li>
-          <li><%= link_to 'MyPage', '/users/'+current_user.id.to_s(10) %></li>
-          <li><%= link_to '作品の投稿', new_products_path %></li>
+          <li><a href='/users/<%=current_user.id%>'>マイページ</a></li>
           <li><%= link_to 'ログアウト', '/users/sign_out', method: :delete %></li>
+          <li><%= link_to '作品の投稿', new_products_path %></li>
         </ul>
       </div>
     </div>
