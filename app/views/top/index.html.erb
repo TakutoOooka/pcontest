@@ -25,8 +25,8 @@
 				</a>
 			</td>
 			<td><div align=right>
-				<%= button_tag value: '実行', type: 'button', onclick: "run(i, product.source_code)" do %><% end %>
-				<%= button_tag value: '停止', type: 'button', onclick: "stop(i)" do %><% end %>
+				<%= button_tag type: 'button', onclick: "run(i, product.source_code)" do %>実行<% end %>
+				<%= button_tag type: 'button', onclick: "stop(i)" do %>停止<% end %>
 			</div></td>
 		</tr></table>
 		<% i += 1 %>
