@@ -65,24 +65,36 @@
   <%= csrf_meta_tags %>
 
   <script type="text/javascript">
-    var Pjs;
-    function stop(){ // not work
-      if (Pjs)
-        Pjs.exit();
+    var Pjs = new Array(8);
+    function stop(int num){ // not work
+      if (Pjs[num])
+        Pjs[num].exit();
     }
-    function run(){
+    function run(int num){
       //console.log("Run");
-      stop();
-      var canvas = document.getElementById('canvas0');
-      var code = document.getElementsByName('source_code')[0].value
+      stop(num);
+      var canvas = document.getElementById('canvas'+String(num));
+      var code = document.getElementsByName('source_code')[num].value
       //console.log(code);
       try{
-        Pjs = new Processing(canvas, code);
+        Pjs[num] = new Processing(canvas, code);
         //console.log(Pjs);
       }catch(e){
         alert(e);
       }
     }
+
+		function run(int num, String code) {
+			stop(num);
+      var canvas = document.getElementById('canvas'+String(num));
+      //console.log(code);
+      try{
+        Pjs[num] = new Processing(canvas, code);
+        //console.log(Pjs);
+      }catch(e){
+        alert(e);
+			}
+		}
   </script> 
 </head>
 

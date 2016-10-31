@@ -15,13 +15,23 @@
 
 <div>
 	<div><h3>人気作品</h3></div>
-	<ul>
+	<div>
+<% i = 0 %>
 	<% @popular_products.each do |product| %>
-		<a href="/products/<%=product.id%>">
-			<li><%= product.source_code %></li>
-		</a>
+		<table><tr>
+			<td>
+				<a href="/products/<%=product.id%>">
+					<canvas id="canvas<%=i%>" width="320px" height="320px"></canvas>
+				</a>
+			</td>
+			<td><div align=right>
+				<%= button_tag value: '実行', type: 'button', onclick: "run(i, product.source_code)" do %><% end %>
+				<%= button_tag value: '停止', type: 'button', onclick: "stop(i)" do %><% end %>
+			</div></td>
+		</tr></table>
+		<% i += 1 %>
 	<% end %>
-	</ul>
+	</div>
 	<div><%= link_to 'もっと見る', '/products/popular_products',
 		method: :get %></div>
 </div>
