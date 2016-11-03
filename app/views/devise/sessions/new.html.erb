@@ -1,26 +1,51 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row main">
+    <div class="panel-heading">
+             <div class="panel-title text-center">
+                <h1 class="title">Sign in</h1>
+                <hr />
+              </div>
+          </div> 
+    <div class="main-login main-center">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'form-horizontal') do |f| %>
+        <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+        <div class="form-group field">
+          <label for="email" class="cols-sm-2 control-label">Your Email</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+        <div class="form-group field">
+          <label for="password" class="cols-sm-2 control-label">Password</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+            </div>
+          </div>
+        </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <% if devise_mapping.rememberable? -%>
+        <div class="form-group field">
+          <label for="confirm" class="cols-sm-2 control-label">Remember me</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <%= f.check_box :remember_me %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+        <div class="form-group actions">
+          <%= f.submit "Log in", class: 'btn btn-primary btn-lg btn-block login-button' %>
+        </div>
+      <%= render "devise/shared/links" %>
+      <% end %>
     </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
