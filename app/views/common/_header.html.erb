@@ -1,26 +1,41 @@
 <% if user_signed_in? %>
-  <div class='navbar navbar-default navbar-fixed-top'>
-    <div class='container'>
-      <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-responsive-collapse'>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-      </button>
-      <div>
-        <%= link_to root_path, :class => 'navbar-brand' do %>
-          <%= image_tag 'logo.png' %>
-        <% end %>
-        <small class='hidden-xs hidden-sm'>みんなの作品を見てみよう！</small>
+
+<div id="tf-home">
+  <div class="overlay">
+    <div id="sticky-anchor"></div>
+      <nav id="tf-menu" class="navbar navbar-default navbar-fixed-top">
+          <div class="container">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand logo" href="index.html">PContest</a>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><%= link_to 'HOME', root_path %></li>
+                  <li><a href='/users/<%=current_user.id%>'>マイページ</a></li>
+                  <li><%= link_to 'ログアウト', '/users/sign_out', method: :delete %></li>
+                  <li><%= link_to '作品の投稿', new_products_path %></li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+      </nav>
+
+
+      <div class="container">
+          <div class="content">
+              <h1>Processing Contest Web</h1>
+              <h3>that communicates, connects and engages customers</h3>
+          </div>
       </div>
-      <div class='navbar-collapse collapse navbar-responsive-collapse navbar-right'>
-        <ul class='nav navbar-nav'>
-          <li><%= link_to 'HOME', root_path %></li>
-          <li><a href='/users/<%=current_user.id%>'>マイページ</a></li>
-          <li><%= link_to 'ログアウト', '/users/sign_out', method: :delete %></li>
-          <li><%= link_to '作品の投稿', new_products_path %></li>
-        </ul>
-      </div>
-    </div>
   </div>
+</div>
 
 <% end %>

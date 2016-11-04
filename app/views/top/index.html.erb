@@ -1,50 +1,103 @@
-<div><h1>Processing Contest!!</h1></div>
 <% i = 0 %>
 
-<div>
-	<div><h3>新規作品</h3></div>
-	<div>
-		<% @popular_products.each do |product| %>
-			<table><tr>
-				<td>
-					<a href="/products/<%=product.id%>">
-						<canvas id="canvas<%=i%>" width="320px" height="320px"">
-						<%=product.source_code%>
-						</canvas>
-					</a>
-				</td>
-				<td><div align=right>
-					<%= button_tag type: 'button', onclick: "runByCanvasText(#{i})" do %>実行<% end %>
-					<%= button_tag type: 'button', onclick: "stop(#{i})" do %>停止<% end %>
-				</div></td>
-			</tr></table>
-			<% i += 1 %>
-		<% end %>
-	</div>
-	<div><%= link_to 'もっと見る', '/products/fresh_products',
-		method: :get %></div>
+<div id="tf-service">
+    <div class="container">
+
+        <div class="col-md-4">
+
+            <div class="media">
+              <div class="media-body">
+                <h4 class="media-heading">Brand & Graphics Design</h4>
+                <p>Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+              </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="media">
+              <div class="media-body">
+                <h4 class="media-heading">Web Designer & Developer</h4>
+                <p>Cras sit amet nibh libero, in gravida nulla. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+              </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="media">
+              <div class="media-body">
+                <h4 class="media-heading">Business Consultant</h4>
+                <p>Metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+              </div>
+            </div>
+
+        </div>
+        
+    </div>
 </div>
 
-<div>
-	<div><h3>人気作品</h3></div>
-	<div>
-		<% @popular_products.each do |product| %>
-			<table><tr>
-				<td>
-					<a href="/products/<%=product.id%>">
+<div id="tf-portfolio">
+    <div class="container">
+        <div class="section-title">
+            <h3>人気作品</h3>
+        </div>
+
+        <div class="space"></div>
+        <% i = 0 %>
+        <% @popular_products.each do |product| %>
+			<div class="row toppadding">
+	            <div class="col-md-12">
+		            <a href="/products/<%=product.id%>">
 						<canvas id="canvas<%=i%>" width="320px" height="320px"">
 						<%=product.source_code%>
 						</canvas>
 					</a>
-				</td>
-				<td><div align=right>
-					<%= button_tag type: 'button', onclick: "runByCanvasText(#{i})" do %>実行<% end %>
-					<%= button_tag type: 'button', onclick: "stop(#{i})" do %>停止<% end %>
-				</div></td>
-			</tr></table>
-			<% i += 1 %>
+					<%= button_tag type: 'button', onclick: "runByCanvasText(#{i})", class: "btn btn-primary my-btn dark" do %>Run<% end %>
+					<%= button_tag type: 'button', onclick: "stop(#{i})", class: "btn btn-primary my-btn dark" do %>Stop<% end %>
+	            </div>
+				<% i += 1 %>
+	        </div>
 		<% end %>
-	</div>
-	<div><%= link_to 'もっと見る', '/products/popular_products',
-		method: :get %></div>
+
+		<div class="row toppadding">
+        	<div class="col-md-16">
+        		<%= link_to 'もっと見る', '/products/fresh_products', class: "btn btn-primary my-btn dark", method: :get %>
+        	</div>
+        </div>
+    </div>
+</div>
+
+<div id="tf-portfolio">
+    <div class="container">
+        <div class="section-title">
+            <h3>新着作品</h3>
+        </div>
+
+        <div class="space"></div>
+        <% @popular_products.each do |product| %>
+			<div class="row toppadding">
+	            <div class="col-md-12">
+		            <a href="/products/<%=product.id%>">
+						<canvas id="canvas<%=i%>" width="320px" height="320px"">
+						<%=product.source_code%>
+						</canvas>
+					</a>
+					<%= button_tag type: 'button', onclick: "runByCanvasText(#{i})", class: "btn btn-primary my-btn dark" do %>Run<% end %>
+					<%= button_tag type: 'button', onclick: "stop(#{i})", class: "btn btn-primary my-btn dark" do %>Stop<% end %>
+	            </div>
+				<% i += 1 %>
+	        </div>
+		<% end %>
+
+        <div class="row toppadding">
+        	<div class="col-md-16">
+        		<%= link_to 'もっと見る', '/products/fresh_products', class: "btn btn-primary my-btn dark", method: :get %>
+
+        	</div>
+        </div>
+
+    </div>
 </div>
