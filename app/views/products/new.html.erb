@@ -1,6 +1,7 @@
-<div class="contents row">
-  <%= form_tag('/products', method: :post) do %>
-    <h3>作品を投稿する</h3>
-    <%= render partial: 'development' %>
-  <% end %>
-</div>
+<%= form_tag('/products', method: :post) do %>
+	<div class="space"></div>
+	<div class="container">
+		<h3>作品を投稿する</h3>
+	    <%= render partial: 'development' %>
+    </div>
+<% end %>

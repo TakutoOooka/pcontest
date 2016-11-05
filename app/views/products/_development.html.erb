@@ -8,19 +8,30 @@
 	end
  %>
 
-<input placeholder=<%=product_name%> type="text" name="product_name">
-<table width=960px heiht=320px bgcolor=#eeeeee><tr> 
-<td width=320px height=320px bgcolor=white> 
-	<canvas id="canvas0" width="320px" height="320px"></canvas> 
-</td>
-<td>
-  <div align=right>
-  <textarea id="editor" rows=25 cols=80 name="source_code">
-  	<%= source_code %>
-  </textarea><br>
-  <input type=button onclick="run(0)" value="実行"> 
-  <input type=button onclick="stop(0)" value="停止">
-  <input type="submit" value="投稿する">
-</div> 
-</td></tr>
-</table>
+<div class="space"></div>
+<div class="container">
+	<div class="row toppadding">
+	    <div class="col-md-12">
+			<input placeholder=<%=product_name%> type="text" name="product_name">
+	    </div>
+	</div>
+	<div class="row toppadding">
+		<div class="col-md-6">
+			<canvas id="canvas0" width="320px" height="320px"></canvas> 
+		</div>
+		<div class="col-md-6">
+			<textarea id="editor" rows=25 cols=80 name="source_code"><%= source_code %></textarea><br>
+		</div>
+	</div>
+	<div class="row toppadding"">
+		<div class="col-md-4">
+			<%= button_tag type: 'button', onclick: "run(0)", class: "btn btn-primary my-btn dark" do %>Run<% end %>
+		</div>
+		<div class="col-md-4">
+			<%= button_tag type: 'button', onclick: "stop(0)", class: "btn btn-primary my-btn dark" do %>Stop<% end %>
+		</div>
+		<div class="col-md-4">
+			<input type="submit" value="投稿する" class="btn btn-primary my-btn dark">
+		</div>
+	</div>
+</div>
