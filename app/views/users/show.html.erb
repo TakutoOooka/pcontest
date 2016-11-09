@@ -1,33 +1,49 @@
 <% if @show_user.id == current_user.id %>
-<div>
-	<div>
-		<div><h1>My Page</h1></div>
-		<div><p>NickName: <%= @show_user.nickname %></p></div>
-		<div><p>Email: <%= @show_user.email %></p></div>
-		<%= link_to 'プロフィールの編集', edit_user_registration_path %>
-	</div>
+<div id="tf-portfolio">
+    <div class="container">
+        <div class="section-title">
+        	<h2>MyPage</h2>
+        </div>
 
-	<div>
-		<h2>My Products</h2>
-		<%= render partial: 'showproducts' %>
-		<%= paginate(@user_products) %>
-	</div>
+        <div class="row toppadding">
+	        <div class="col-md-12">
+		        <h4>NickName: <%= @show_user.nickname %></h4>
+				<h4>Email: <%= @show_user.email %></h4>
+				<%= link_to 'プロフィールの編集', edit_user_registration_path, class: "btn btn-info" %>
+	        </div>
+	    </div>
 
+	    <div class="space"></div>
+	    <div class="row top padding">
+	    	<div class="col-md-12">
+				<h2>My Products</h2>
+				<%= render partial: 'showproducts' %>
+				<%= paginate(@user_products) %>
+			</div>
+	    </div>
+    </div>
 </div>
 <% else %>
+<div id="tf-portfolio">
+    <div class="container">
+        <div class="section-title">
+        	<h1><%= @show_user.nickname %>'s Page</h1>
+        </div>
 
-<div>
-	<div>
-		<div><h1><%= @show_user.nickname %>'s Page</h1></div>
-		<div><p>NickName: <%= @show_user.nickname %></p></div>
-	</div>
+        <div class="row toppadding">
+	        <div class="col-md-12">
+		        <p>NickName: <%= @show_user.nickname %></p>
+	        </div>
+	    </div>
 
-	<div>
-		<h2><%= @show_user.nickname %>'s Products</h2>
-		<%= render partial: 'showproducts' %>
-		<%= paginate(@user_products) %>
-	</div>
-
+	    <div class="row top padding">
+	    	<div class="col-md-12">
+				<h2><%= @show_user.nickname %>'s Products</h2>
+				<%= render partial: 'showproducts' %>
+				<%= paginate(@user_products) %>
+			</div>
+	    </div>
+    </div>
 </div>
 
 <% end %>

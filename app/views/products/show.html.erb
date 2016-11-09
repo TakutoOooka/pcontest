@@ -18,28 +18,19 @@
         </div>
 
 		<% if current_user.id == @product.user.id %>
-			<div class="row toppadding">
-	        	<div class="col-md-2">
-	        	<%= link_to '/products/'+@product.id.to_s(10)+'/destroy', method: :delete do %>
-					<h4>この作品を削除する</h4>
-				<% end %>
-	        	</div>
-
-	        	<div class="col-md-2">
-	        	<%= link_to '/products/'+@product.id.to_s(10)+'/edit', method: :get do %>
-					<h4>編集する</h4>
-				<% end %>
-	        	</div>
-	        </div>
+	        <div style="text-align:center;">
+		        <div class="btn-group"  role="group">
+		          <%= link_to '編集する', '/products/'+@product.id.to_s(10)+'/edit', class: "btn btn-info", method: :get %>
+		          <%= link_to 'この作品を削除する', '/products/'+@product.id.to_s(10)+'/destroy', class: "btn btn-danger", method: :delete %>
+		        </div>
+	      	</div>
 		<% end %>   
 
 		<% unless current_user.reviews.find_by(product_id: @product.id) %>
 		    <%= form_tag('/reviews/'+@product.id.to_s(10)+'/create', method: :post) do %>
 			    <h3>評価する</h3>
-			    <input placeholder="ProductName" type="text" name="product_name">
 			    <p>星</p>
-			    <textarea cols="30" name="review" placeholder="text" rows="10"></textarea>
-			    <input type="submit" value="SENT">
+			    <input type="submit" value="SENT" class="btn btn-primary">
 			<% end %>
 		<% end %>     
 

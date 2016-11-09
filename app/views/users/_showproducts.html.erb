@@ -1,20 +1,16 @@
 <% i = 0 %>
+<div class="space"></div>
 <% @user_products.each do |product| %>
-	<table>
-	<tr><div><%= product.product_name %></div></tr>
-	<tr>
-		<td>
-			<a href="/products/<%=product.id%>">
+	<div class="row toppadding">
+        <div class="col-md-12">
+            <a href="/products/<%=product.id%>">
 				<canvas id="canvas<%=i%>" width="320px" height="320px"">
 				<%=product.source_code%>
 				</canvas>
 			</a>
-		</td>
-		<td><div align=right>
-			<%= button_tag type: 'button', onclick: "runByCanvasText(#{i})" do %>実行<% end %>
-			<%= button_tag type: 'button', onclick: "stop(#{i})" do %>停止<% end %>
-		</div></td>
-	</tr>
-	</table>
-	<% i += 1 %>
+			<%= button_tag type: 'button', onclick: "runByCanvasText(#{i})", class: "btn btn-primary my-btn dark" do %>Run<% end %>
+			<%= button_tag type: 'button', onclick: "stop(#{i})", class: "btn btn-primary my-btn dark" do %>Stop<% end %>
+        </div>
+		<% i += 1 %>
+    </div>
 <% end %>
