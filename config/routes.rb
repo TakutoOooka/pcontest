@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get 'products/:id/edit' => 'products#edit'
   delete 'products/:id/destroy' => 'products#destroy'
   patch 'products/:id/update' => 'products#update'
-  resource :reviews, only: [:new, :edit, :show, :update, :destroy]
-  post 'reviews/:product_id/create' => 'reviews#create'
+  post 'reviews/create/:product_id' => 'reviews#create'
+  delete 'reviews/destroy/:review_id' => 'reviews#destroy'
   
   resource :top, only: [:index, :show]
   root to: 'top#index'

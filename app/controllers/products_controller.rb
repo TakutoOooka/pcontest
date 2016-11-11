@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
 	def update
 		product = Product.find(params[:id])
 		product.source_code = params[:source_code]
+		product.product_name = params[:product_name]
 		product.save
 	end
 

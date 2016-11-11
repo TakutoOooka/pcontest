@@ -7,11 +7,9 @@
         <div class="space"></div>
 		<div class="row toppadding">
             <div class="col-md-12">
-	            <a href="/products/<%=@product.id%>">
-					<canvas id="canvas0" width="320px" height="320px"">
-					<%=@product.source_code%>
-					</canvas>
-				</a>
+				<canvas id="canvas0" width="320px" height="320px"">
+				<%=@product.source_code%>
+				</canvas>
 				<%= button_tag type: 'button', onclick: "runByCanvasText(0)", class: "btn btn-primary my-btn dark" do %>Run<% end %>
 				<%= button_tag type: 'button', onclick: "stop(0)", class: "btn btn-primary my-btn dark" do %>Stop<% end %>
             </div>
@@ -24,15 +22,66 @@
 		          <%= link_to 'この作品を削除する', '/products/'+@product.id.to_s(10)+'/destroy', class: "btn btn-danger", method: :delete %>
 		        </div>
 	      	</div>
-		<% end %>   
+		<% end %>
 
-		<% unless current_user.reviews.find_by(product_id: @product.id) %>
-		    <%= form_tag('/reviews/'+@product.id.to_s(10)+'/create', method: :post) do %>
-			    <h3>評価する</h3>
-			    <p>星</p>
-			    <input type="submit" value="SENT" class="btn btn-primary">
+		<div class="row toppadding">
+            <div class="col-md-12">
+            	<h3>この作品に対するレビュー</h3>
+
+            	<div class="toppadding">
+	            	<% @reviews.each do |review| %>
+	            		<h4>コメント:<%=review[:review]%></h4>
+	            		<h4>評価:<%=review[:rate]%></h4>
+	            	<% end %>
+            	</div>
+            </div>
+        </div>
+
+        <% my_review_for_product = current_user.reviews.find_by(product_id: @product.id) %>
+
+		<% if my_review_for_product %>
+        <div class="row toppadding">
+            <div class="col-md-12">
+            	<h3>自分のレビュー</h3>
+
+            	<div class="toppadding">
+	            	<h4>コメント：<%=my_review_for_product[:review]%></h4>
+	            	<h4>評価：<%=my_review_for_product[:rate]%></h4>
+		          	<%= link_to '自分の評価を削除する', 
+		          	'/reviews/destroy/'+my_review_for_product.id.to_s(10), class: "btn btn-danger", method: :delete %>
+            	</div>
+            </div>
+        </div> 
+        <% end %> 
+
+	    <% unless my_review_for_product %>
+			<%= form_tag('/reviews/create/'+@product.id.to_s(10), method: :post) do %>
+				<div class="row toppadding">
+		            <div class="col-md-12">
+					    <h3>評価する</h3>
+					    <p>
+					    	<div class="space"></div>
+					    	<h5>評価</h5>
+							<select name="rate">
+								<option value="nothing"> --- 評価を選んでください ---</option>
+								<option value="1">よくないね・・・</option>
+								<option value="2">あまりよくないね</option>
+								<option value="3">普通</option>
+								<option value="4">いいね！</option>
+								<option value="5">とてもいい！</option>
+							</select>
+						</p>
+					    <textarea id="editor" rows=3 cols=20 name="review_text" placeholder="一口コメント"></textarea>
+		            </div>
+		        </div>
+
+		        <div class="row toppadding">
+		        	<div class="col-md-12">
+					    <input type="submit" value="SENT" class="btn btn-primary">   
+		        	</div>
+		        </div>
 			<% end %>
-		<% end %>     
+		<% end %>
 
     </div>
 </div>
